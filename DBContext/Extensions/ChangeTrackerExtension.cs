@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Abstracts;
+using Domain.Interfaces;
 using Domain.Provider;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -12,10 +13,10 @@ namespace DBContext.Extensions
         public static void ProcessCreation(this ChangeTracker changeTracker, TenantProvider tenantProvider)
         {
             changeTracker
-                .Entries<IHasTenant>()
+                .Entries<ITenant>()
                 .Where(e => e.State == EntityState.Added)
                 .ToList()
-                .ForEach(e => e.Entity.SetTenantId(tenantProvider.Id));
+                .ForEach(e => e.Entity.SetTenantId(tenantProvider.GetTenantId()));
         }
 
     }
