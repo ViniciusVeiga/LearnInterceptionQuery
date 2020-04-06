@@ -19,8 +19,8 @@ namespace DBContext.Repository
         {
             return _context
                 .Portfolios
+                //.IgnoreQueryFilters()
                 .AsNoTracking()
-                .Where(p => _context.TenantProvider.Id.Equals(p.TenantId))
                 .ToArray();
         }
 
@@ -29,7 +29,6 @@ namespace DBContext.Repository
             return _context
                 .Portfolios
                 .AsNoTracking()
-                .Where(p => _context.TenantProvider.Id.Equals(p.TenantId))
                 .Where(p => id.Equals(p.Id))
                 .FirstOrDefault();
         }

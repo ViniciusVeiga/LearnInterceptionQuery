@@ -3,7 +3,7 @@ using System;
 
 namespace Domain.Abstracts
 {
-    public abstract class HasTenant : IHasTenant
+    public abstract class HasTenant : ITenant
     {
         public Guid TenantId { get; private set; }
 

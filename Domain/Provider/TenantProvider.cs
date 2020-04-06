@@ -5,11 +5,13 @@ namespace Domain.Provider
 {
     public class TenantProvider
     {
+        private Guid id;
+
         public TenantProvider(Guid id)
         {
-            Id = id;
+            this.id = id;
         }
 
-        public Guid Id { get; private set; }
+        public Guid GetTenantId() => id;
     }
 }

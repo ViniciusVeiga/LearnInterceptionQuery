@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Domain.Interfaces
 {
-    public interface IHasTenant
+    public interface ITenant
     {
+        Guid TenantId { get; }
         void SetTenantId(Guid tenantId);
     }
 }

@@ -3,7 +3,6 @@ using Domain.Entity;
 using Domain.Provider;
 using MeuPortfolio.PortfolioManagement.Infra.SQL.DataContext.Maps;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace MeuPortfolio.PortfolioManagement.Infra.SQL.DataContext
 {
@@ -23,13 +22,12 @@ namespace MeuPortfolio.PortfolioManagement.Infra.SQL.DataContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new TenantMap());
-            modelBuilder.ApplyConfiguration(new PortfolioMap());
+            modelBuilder.ApplyConfiguration(new PortfolioMap(this));
         }
 
         public override int SaveChanges()
